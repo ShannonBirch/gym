@@ -18,12 +18,6 @@ public class AppStartScreenActivity extends AppCompatActivity {
         Button loginButton = findViewById(R.id.loginButton);
         Button registerButton = (findViewById(R.id.registerButton));
 
-
-        // Below method sets the toolbar as the app bar for the activity.
-        Toolbar myToolbar = findViewById(R.id.my_toolbar);
-        setSupportActionBar(myToolbar);
-
-
         // Brings you to Login Activity when Login buttons is pressed
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +34,10 @@ public class AppStartScreenActivity extends AppCompatActivity {
             }
         });
 
-
     }
+
+
+
+
+
 }
