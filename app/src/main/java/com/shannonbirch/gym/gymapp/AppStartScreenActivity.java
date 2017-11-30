@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.support.v7.widget.Toolbar;
+import android.widget.TextView;
 
 public class AppStartScreenActivity extends AppCompatActivity {
 
@@ -13,6 +14,13 @@ public class AppStartScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_start_screen);
+
+        // Below method sets the toolbar as the app bar for the activity
+        Toolbar myToolbar = findViewById(R.id.tool_bar);
+
+        // Setting the title of the activity in the Toolbar
+        TextView toolBarTitle = myToolbar.findViewById(R.id.toolbar_title) ;
+        toolBarTitle.setText(R.string.greetings);
 
         // Login and Registration Buttons
         Button loginButton = findViewById(R.id.loginButton);
