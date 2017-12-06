@@ -1,67 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.shannonbirch.gym.gymapp.LoginActivity">
+    tools:context="com.shannonbirch.gym.gymapp.LoginActivity"
+    android:fitsSystemWindows="true">
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <!-- Login Email -->
-        <EditText
-            android:id="@+id/login_email"
-            android:labelFor="@+id/login_email"
-            android:hint="@string/email"
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginEnd="50dp"
-            android:ems="10"
-            android:inputType="textEmailAddress" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <!-- Login Password -->
-        <EditText
-            android:id="@+id/login_password"
-            android:labelFor="@+id/login_password"
-            android:hint="@string/password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginEnd="50dp"
-            android:ems="10"
-            android:inputType="textPassword" />
+            <!-- Login Email -->
+            <EditText
+                android:id="@+id/login_email"
+                android:labelFor="@+id/login_email"
+                android:hint="@string/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-100dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:ems="10"
+                android:inputType="textEmailAddress" />
 
-        <!-- Login Button -->
-        <Button
-            android:id="@+id/loginButton"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="40dp"
-            android:background="@drawable/button"
-            android:layout_marginTop="50dp"
-            android:layout_marginStart="100dp"
-            android:layout_marginEnd="100dp"
-            android:text="@string/login"
-            android:textColor="@drawable/text_color"
-            android:textAllCaps="false"/>
+            <!-- Login Password -->
+            <EditText
+                android:id="@+id/login_password"
+                android:labelFor="@+id/login_password"
+                android:hint="@string/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:ems="10"
+                android:inputType="textPassword" />
 
-    </LinearLayout>
+            <!-- Login Button -->
+            <Button
+                android:id="@+id/loginButton"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:background="@drawable/button"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginEnd="100dp"
+                android:text="@string/login"
+                android:textColor="@drawable/text_color"
+                android:textAllCaps="false"/>
 
-    <include
-        android:id="@+id/tool_bar"
-        layout="@layout/tool_bar">
+        </LinearLayout>
 
-    </include>
+        <include
+            android:id="@+id/tool_bar"
+            layout="@layout/tool_bar">
+
+        </include>
 
 
 
 
 
-</android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+</android.support.design.widget.CoordinatorLayout>

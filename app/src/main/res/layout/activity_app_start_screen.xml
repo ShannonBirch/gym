@@ -1,75 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.shannonbirch.gym.gymapp.AppStartScreenActivity">
+    tools:context="com.shannonbirch.gym.gymapp.AppStartScreenActivity"
+    android:fitsSystemWindows="true">
 
-    <include
-        android:id="@+id/tool_bar"
-        layout="@layout/tool_bar">
-    </include>
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:src="@drawable/weightlifting_logo"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:adjustViewBounds="true"
-        android:layout_marginStart="100dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="100dp"
-        android:scaleType="centerInside"
-        android:contentDescription="@string/logo_description" />
+        android:layout_height="match_parent">
+        <include
+            android:id="@+id/tool_bar"
+            layout="@layout/tool_bar">
+        </include>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:src="@drawable/weightlifting_logo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:layout_marginStart="100dp"
+            android:layout_marginEnd="100dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginBottom="100dp"
+            android:scaleType="centerInside"
+            android:contentDescription="@string/logo_description" />
 
 
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-        <!--
-            About them buttons
-            The two buttons are made with the same style.
-            Layouts are wrap_content to scale the button size with the different screen sizes.
-            The style, colours and button image behavior is linked to the drawable/button
-         -->
-        <Button
-            android:id="@+id/registerButton"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minHeight="50dp"
-            android:background="@drawable/button"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="20dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1"
-            android:text="@string/register"
-            android:textColor="@drawable/text_color"
-            android:textAllCaps="false"/>
+            <!--
+                About them buttons
+                The two buttons are made with the same style.
+                Layouts are wrap_content to scale the button size with the different screen sizes.
+                The style, colours and button image behavior is linked to the drawable/button
+             -->
+            <Button
+                android:id="@+id/registerButton"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="50dp"
+                android:background="@drawable/button"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:text="@string/register"
+                android:textColor="@drawable/text_color"
+                android:textAllCaps="false"/>
 
-        <Button
-            android:id="@+id/loginButton"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minHeight="50dp"
-            android:background="@drawable/button"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="20dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1"
-            android:text="@string/login"
-            android:textColor="@drawable/text_color"
-            android:textAllCaps="false"/>
+            <Button
+                android:id="@+id/loginButton"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="50dp"
+                android:background="@drawable/button"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:text="@string/login"
+                android:textColor="@drawable/text_color"
+                android:textAllCaps="false"/>
 
 
-    </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+        </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
+</android.support.design.widget.CoordinatorLayout>

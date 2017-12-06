@@ -1,6 +1,5 @@
 package com.shannonbirch.gym.gymapp;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -10,6 +9,7 @@ import android.widget.TextView;
 
 public class RegisterActivity extends AppCompatActivity {
 
+    private String email, email2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +22,25 @@ public class RegisterActivity extends AppCompatActivity {
         TextView toolBarTitle = myToolbar.findViewById(R.id.toolbar_title) ;
         toolBarTitle.setText(R.string.register);
 
-        Button loginButton = findViewById(R.id.loginButton);
+        Button registerButton = findViewById(R.id.loginButton);
+        // Sets onClick for the registerButton
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                register();
+
+            }
+        });
+
 
     }
+
+
+    private void register(){
+        //ToDo: Figure out how to reuse the isEditTextEmpty method across multiple classes properly
+
+    }
+
+
 }

@@ -1,0 +1,32 @@
+Changelog:
+
+(So you can follow what I changed. That's probably clear from the name of this file but just in case I'm explaining it. It's late man don't judge me.)
+
+6/12/17 - ToDos - Start: 1 - End: 5
+--------------
+
+	Multiple
+	-------
+	-Dirty fixed odd bug with white notification bar on splash screen, login screen and register screen.
+
+	-Edited drawer to add a second group of items. Added Settings and Logout as items.
+
+	LoginActivity
+	------
+	-Tinkering with login to lay out an idea of how it will work
+		-Now will no longer take you to home if the text fields are empty
+			-Toasts to tell you that email/password field is required
+
+	-Edited login xml so keyboard stays below login button for easier access while testing (feel free to change back)
+
+	RegisterActivity
+	------
+	
+	-Added on click to button in register.
+		- Renamed button so it's no longer just a sloppy copy paste job
+		
+	
+	
+
+	
+
