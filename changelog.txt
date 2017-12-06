@@ -2,7 +2,7 @@ Changelog:
 
 (So you can follow what I changed. That's probably clear from the name of this file but just in case I'm explaining it. It's late man don't judge me.)
 
-6/12/17 - ToDos - Start: 1 - End: 5
+Shannon Birch - 6/12/17 - ToDos - Start: 1 - End: 5
 --------------
 
 	Multiple
