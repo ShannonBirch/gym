@@ -83,6 +83,15 @@ public class MainActivity extends AppCompatActivity {
                         reminderFragmentTransaction.replace(R.id.frame, remindersFragment).commit();
                         return true;
 
+                    case R.id.settings:
+                        Toast.makeText(getApplicationContext(),"Settings Selected",Toast.LENGTH_SHORT).show();
+                        return true;
+
+                    case R.id.logout:
+                        Toast.makeText(getApplicationContext(),"Logout Selected",Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(MainActivity.this, AppStartScreenActivity.class));
+                        return true;
+
                     default:
                         Toast.makeText(getApplicationContext(),"Somethings Wrong",Toast.LENGTH_SHORT).show();
                         return true;
@@ -123,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         //Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.action_bar_menu, menu);
+        //getMenuInflater().inflate(R.menu.action_bar_menu, menu);
         return true;
     }
 

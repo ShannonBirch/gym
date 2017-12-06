@@ -26,8 +26,8 @@ public class LoginActivity extends AppCompatActivity {
         // Below method sets the toolbar as the app bar for the activity
         Toolbar myToolbar = findViewById(R.id.tool_bar);
 
-        emailField = (EditText) findViewById(R.id.login_email);
-        passwordField = (EditText) findViewById(R.id.login_password);
+        emailField = findViewById(R.id.login_email);
+        passwordField = findViewById(R.id.login_password);
 
         // Setting the title of the activity in the Toolbar
         TextView toolBarTitle = myToolbar.findViewById(R.id.toolbar_title) ;

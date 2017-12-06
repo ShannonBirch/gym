@@ -27,6 +27,18 @@ Shannon Birch - 6/12/17 - ToDos - Start: 1 - End: 5
 		
 	
 	
-
+Shannon & Artur 6/12/2017 - ToDos - Start: 3 - 
 	
+	RegisterActivity
+	----------------
+	- Throws error if register input credentials dont match
+
+	MainActivity
+	------------
+	- Removed action bar button (settings and logout)
+	- Logout in the drawer now opens screen start menu
+	- Drawer Setting and Logout menus have icons
+
+
+
 
