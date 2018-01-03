@@ -38,6 +38,16 @@ Shannon & Artur 6/12/2017 - ToDos - Start: 3 -
 	- Removed action bar button (settings and logout)
 	- Logout in the drawer now opens screen start menu
 	- Drawer Setting and Logout menus have icons
+	
+Shannon Birch - 3/1/18 - ToDos - Start: 4 - End: 4
+	RegisterActivity
+	----------------
+	- Now php posts to the server. Will only open the home activity if the server returns a "Success" code
+	
+	AndroidManifest.xml
+	-------------------
+	- Added internet and network permissions
+	
 
 
 
