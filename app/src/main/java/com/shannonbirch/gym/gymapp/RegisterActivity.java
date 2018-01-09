@@ -153,13 +153,13 @@ public class RegisterActivity extends AppCompatActivity {
               }
 
 
-
-                if(responseCode.equals("Success\n")) {//User has been registered
+                //ToDo:Figure out where that first \n came from
+                if(responseCode.equals("\nSuccess\n")) {//User has been registered
                     //Open home screen
                     startActivity(new Intent(RegisterActivity.this, MainActivity.class));
                     return;
                 }else{//PHP script returns something other than "Success"
-
+                Log.e("ResponseCode:", responseCode);
                 invalidDetailsString = "Incorrect system response " + responseCode;
                 }
 
