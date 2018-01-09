@@ -34,8 +34,10 @@ function generateHash($password) {
 
     }else{//The email address is not currently in the system
 
+
 			//ToDo: Implement check on UID so that there are no duplicates;
-			$uID = substr(md5(rand()), 0, 18);
+
+			$uID = getUserID();
 
 	    $insertSQL = "INSERT INTO USERS(uID, uEmailAddress, uPass)
 	                        VALUES('".$uID."', '".$email."', '".generateHash($pass)."');";
@@ -60,28 +62,31 @@ function generateHash($password) {
             Something is empty";
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   }
+
+
+
+	function getUserID(){
+		/*	Generates a random user ID
+				Checks if it exists
+				If it does exist
+				recursively calls the function until the generated user ID doesn't exist
+		*/
+
+		$userID = substr(md5(rand()), 0, 18);
+		$checkUIDSQL = "SELECT uID FROM USERS WHERE uID='$userID';";
+
+		$uIDCheckResult=$conn->query($checkUIDSQL);
+		if($uIDCheckResult->num_rows>0){
+			return getUserID;
+		}else{
+			return $userID;
+		}
+
+
+	}
+
+
+
 
 ?>

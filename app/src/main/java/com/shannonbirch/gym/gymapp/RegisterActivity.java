@@ -53,6 +53,8 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void register(){
+        //ToDo: Gather more information
+
         Toast invalidDetailsToast;
         String invalidDetailsString="";
         if(isEditTextEmpty(email1) ){
