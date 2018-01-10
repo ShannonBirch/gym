@@ -1,9 +1,9 @@
 package com.shannonbirch.gym.gymapp;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +18,8 @@ import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+
+import static com.shannonbirch.gym.gymapp.tools.IsEditTextEmpty.isEditTextEmpty;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -179,10 +181,6 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
-    //ToDo: Figure out how to reuse the isEditTextEmpty method across multiple classes properly
-    private static boolean isEditTextEmpty(EditText inEditText){
-        return inEditText.getText().toString().trim().length()==0;
-    }
 
 
 

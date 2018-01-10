@@ -2,17 +2,30 @@ package com.shannonbirch.gym.gymapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
+
+import static com.shannonbirch.gym.gymapp.tools.IsEditTextEmpty.isEditTextEmpty;
+
 public class LoginActivity extends AppCompatActivity {
+
+    static final String SHARED_PREF_KEY = "UserInfo";
 
     private EditText emailField, passwordField;
 
@@ -58,18 +71,141 @@ public class LoginActivity extends AppCompatActivity {
 
         }else {
 
-            //ToDo: Have this actually connect to a server and check login details
-            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-            return;
+
+            String email  = emailField.getText().toString();
+            String pass   = passwordField.getText().toString();
+            String data   = "";
+
+
+            try {// To create a data variable to send to the server
+                data = URLEncoder.encode("email", "UTF-8")
+                        + "=" + URLEncoder.encode(email, "UTF-8");
+
+
+                data += "&" + URLEncoder.encode("pass", "UTF-8")
+                        + "=" + URLEncoder.encode(pass, "UTF-8");
+
+            }catch (Exception e) {
+
+            }
+
+            String responseCode = "";
+            BufferedReader reader=null;
+
+
+            try{// To send the data
+
+                //ToDo: write uLogin.php when I'm not on Amazon books wifi
+                URL url = new URL("http://gym.shannonbirch.com/phpScripts/Auth/uLogin.php");
+
+
+
+                //ToDo: Figure out how to revert this when no longer needed
+                int SDK_INT = android.os.Build.VERSION.SDK_INT;
+                if (SDK_INT > 8)
+                {
+                    StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                            .permitAll().build();
+                    StrictMode.setThreadPolicy(policy);
+
+
+                }
+
+                // Send POST data request
+
+                URLConnection conn = url.openConnection();
+                conn.setDoOutput(true);
+                OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+                wr.write( data );
+                wr.flush();
+
+                // Get the server response
+
+                reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                StringBuilder sb = new StringBuilder();
+
+                String line = reader.readLine();//Frst line is blank
+                line = reader.readLine();//Second line contains the first line of the response
+
+
+                if(line.toString().equals("Success")){
+                    //ToDo: Store userID and token
+
+                    String userID = reader.readLine().toString();
+                    String token = reader.readLine().toString();
+
+                    //ToDo: take this out of here
+                    SharedPreferences sharedPreferences;
+
+                    sharedPreferences = getSharedPreferences(SHARED_PREF_KEY, Context.MODE_PRIVATE);
+                    sharedPreferences.edit().putString("uID", userID);
+                    sharedPreferences.edit().putString("uToken", token);
+
+
+
+                    //Open home screen
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+
+                    return;
+
+                }else{//There was an error of sorts
+
+                    //ToDo: clean this and handle common responses
+                    sb.append(line);
+                         /**/
+                    // Read Server Response
+                    while((line = reader.readLine()) != null)
+                    {
+                        Log.e("In read line", line.toString());
+                        // Append server response in string
+                        sb.append(line+"\n");
+                    }
+
+                }
+
+
+
+                responseCode = sb.toString();
+            }
+            catch(Exception ex)
+            {
+                ex.printStackTrace();
+            }
+            finally
+            {
+                try{
+
+                    reader.close();
+                }
+
+                catch(Exception ex) {}
+            }
+
+
+            //ToDo:Figure out where that first \n came from
+            if(responseCode.equals("\nSuccess\n")) {//User has been registered
+                //Open home screen
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                return;
+            }else if(responseCode.equals("Invalid")) {
+                invalidDetailsString = "Invalid Details. Please confirm that the email address and password correct\n" +
+                        "Remember they are case sensitive.";
+
+            }else {//PHP script returns something other than "Success"
+                Log.e("ResponseCode:", responseCode);
+                invalidDetailsString = "Incorrect system response " + responseCode;
+            }
+
+
+
+
+
         }
 
         invalidDetailsToast= Toast.makeText(getApplicationContext(), invalidDetailsString, Toast.LENGTH_LONG);
         invalidDetailsToast.show();
     }
 
-    public static boolean isEditTextEmpty(EditText inEditText){
-        return inEditText.getText().toString().trim().length()==0;
-    }
 
 
 
