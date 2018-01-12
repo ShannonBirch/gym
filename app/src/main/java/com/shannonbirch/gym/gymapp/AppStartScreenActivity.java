@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import static com.shannonbirch.gym.gymapp.tools.CheckToken.checkToken;
 
+
 public class AppStartScreenActivity extends AppCompatActivity {
 
     @Override

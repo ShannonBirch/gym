@@ -94,7 +94,7 @@ public class RegisterActivity extends AppCompatActivity {
                         + "=" + URLEncoder.encode(pass, "UTF-8");
 
             }catch (Exception e) {
-
+                //ToDo: More Exception catching bs
             }
 
             String responseCode = "";
@@ -106,6 +106,7 @@ public class RegisterActivity extends AppCompatActivity {
 
               URL url = new URL("http://gym.shannonbirch.com/phpScripts/Auth/uRegister.php");
 
+                //Android Stuff
                 //ToDo: Figure out how to revert this when no longer needed
                 int SDK_INT = android.os.Build.VERSION.SDK_INT;
                 if (SDK_INT > 8)
@@ -115,7 +116,7 @@ public class RegisterActivity extends AppCompatActivity {
                     StrictMode.setThreadPolicy(policy);
 
 
-                }
+                }//End of Android stuff
 
                // Send POST data request
 

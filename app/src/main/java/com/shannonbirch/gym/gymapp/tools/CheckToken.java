@@ -78,7 +78,7 @@ public class CheckToken {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                 StringBuilder sb = new StringBuilder();
 
-                String line = reader.readLine();//Frst line is blank
+                String line = reader.readLine();//First line is blank
                 line = reader.readLine();//Second line contains the first line of the response
 
 

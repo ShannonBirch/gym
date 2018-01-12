@@ -25,6 +25,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.SubMenu;
 
+import com.shannonbirch.gym.gymapp.tools.CheckToken;
+
+import static com.shannonbirch.gym.gymapp.tools.CheckToken.checkToken;
+import static com.shannonbirch.gym.gymapp.tools.Logout.logout;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -35,96 +40,102 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        // Below method sets the toolbar as the app bar for the activity
-        myToolbar = findViewById(R.id.tool_bar);
-        // Sets the toolbar as the action bar (the settings button didn't show without this line)
-        setSupportActionBar(myToolbar);
+        if (checkToken(MainActivity.this)) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
 
-        // Setting the title of the activity in the Toolbar
-        TextView toolBarTitle = myToolbar.findViewById(R.id.toolbar_title) ;
-        toolBarTitle.setText(R.string.home_menu);
+            // Below method sets the toolbar as the app bar for the activity
+            myToolbar = findViewById(R.id.tool_bar);
+            // Sets the toolbar as the action bar (the settings button didn't show without this line)
+            setSupportActionBar(myToolbar);
 
-        //Initializing NavigationView
-        navigationView = findViewById(R.id.navigation_view);
-        //Setting Navigation View Item Selected Listener to handle the item click of the navigation menu
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            // Setting the title of the activity in the Toolbar
+            TextView toolBarTitle = myToolbar.findViewById(R.id.toolbar_title);
+            toolBarTitle.setText(R.string.home_menu);
 
-            // This method will trigger on item Click of navigation menu
-            @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
+            //Initializing NavigationView
+            navigationView = findViewById(R.id.navigation_view);
+            //Setting Navigation View Item Selected Listener to handle the item click of the navigation menu
+            navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
-                //Checking if the item is in checked state or not, if not make it in checked state
-                if(menuItem.isChecked()) menuItem.setChecked(false);
-                else menuItem.setChecked(true);
+                // This method will trigger on item Click of navigation menu
+                @Override
+                public boolean onNavigationItemSelected(MenuItem menuItem) {
 
-                //Closing drawer on item click
-                drawerLayout.closeDrawers();
+                    //Checking if the item is in checked state or not, if not make it in checked state
+                    if (menuItem.isChecked()) menuItem.setChecked(false);
+                    else menuItem.setChecked(true);
 
-                //Check to see which item was being clicked and perform appropriate action
-                switch (menuItem.getItemId()){
+                    //Closing drawer on item click
+                    drawerLayout.closeDrawers();
 
-                    //Replacing the main content with ContentFragment Which is our Inbox View;
-                    case R.id.home:
-                        Toast.makeText(getApplicationContext(),"Home Selected",Toast.LENGTH_SHORT).show();
-                        HomeFragment homeFragment = new HomeFragment();
-                        android.support.v4.app.FragmentTransaction homeFragmentTransaction = getSupportFragmentManager().beginTransaction();
-                        homeFragmentTransaction.replace(R.id.frame, homeFragment).commit();
-                        return true;
+                    //Check to see which item was being clicked and perform appropriate action
+                    switch (menuItem.getItemId()) {
 
-                    // For rest of the options we just show a toast on click
+                        //Replacing the main content with ContentFragment Which is our Inbox View;
+                        case R.id.home:
+                            Toast.makeText(getApplicationContext(), "Home Selected", Toast.LENGTH_SHORT).show();
+                            HomeFragment homeFragment = new HomeFragment();
+                            android.support.v4.app.FragmentTransaction homeFragmentTransaction = getSupportFragmentManager().beginTransaction();
+                            homeFragmentTransaction.replace(R.id.frame, homeFragment).commit();
+                            return true;
 
-                    case R.id.reminder:
-                        Toast.makeText(getApplicationContext(),"Reminder Selected",Toast.LENGTH_SHORT).show();
-                        RemindersFragment remindersFragment = new RemindersFragment();
-                        android.support.v4.app.FragmentTransaction reminderFragmentTransaction = getSupportFragmentManager().beginTransaction();
-                        reminderFragmentTransaction.replace(R.id.frame, remindersFragment).commit();
-                        return true;
+                        // For rest of the options we just show a toast on click
 
-                    case R.id.settings:
-                        Toast.makeText(getApplicationContext(),"Settings Selected",Toast.LENGTH_SHORT).show();
-                        return true;
+                        case R.id.reminder:
+                            Toast.makeText(getApplicationContext(), "Reminder Selected", Toast.LENGTH_SHORT).show();
+                            RemindersFragment remindersFragment = new RemindersFragment();
+                            android.support.v4.app.FragmentTransaction reminderFragmentTransaction = getSupportFragmentManager().beginTransaction();
+                            reminderFragmentTransaction.replace(R.id.frame, remindersFragment).commit();
+                            return true;
 
-                    case R.id.logout:
-                        Toast.makeText(getApplicationContext(),"Logout Selected",Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(MainActivity.this, AppStartScreenActivity.class));
-                        return true;
+                        case R.id.settings:
+                            Toast.makeText(getApplicationContext(), "Settings Selected", Toast.LENGTH_SHORT).show();
+                            return true;
 
-                    default:
-                        Toast.makeText(getApplicationContext(),"Somethings Wrong",Toast.LENGTH_SHORT).show();
-                        return true;
+                        case R.id.logout:
+                            logout(MainActivity.this);
+                            Toast.makeText(getApplicationContext(), "Logout Selected", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(MainActivity.this, AppStartScreenActivity.class));
+                            return true;
 
+                        default:
+                            Toast.makeText(getApplicationContext(), "Somethings Wrong", Toast.LENGTH_SHORT).show();
+                            return true;
+
+                    }
                 }
-            }
-        });
+            });
 
-        // Initializing Drawer Layout and ActionBarToggle
-        drawerLayout = findViewById(R.id.drawer);
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,drawerLayout,myToolbar,R.string.openDrawer, R.string.closeDrawer){
+            // Initializing Drawer Layout and ActionBarToggle
+            drawerLayout = findViewById(R.id.drawer);
+            ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, myToolbar, R.string.openDrawer, R.string.closeDrawer) {
 
-            @Override
-            public void onDrawerClosed(View drawerView) {
-                // Code here will be triggered once the drawer closes as we dont want anything to happen so we leave this blank
-                super.onDrawerClosed(drawerView);
-            }
+                @Override
+                public void onDrawerClosed(View drawerView) {
+                    // Code here will be triggered once the drawer closes as we dont want anything to happen so we leave this blank
+                    super.onDrawerClosed(drawerView);
+                }
 
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                // Code here will be triggered once the drawer open as we dont want anything to happen so we leave this blank
+                @Override
+                public void onDrawerOpened(View drawerView) {
+                    // Code here will be triggered once the drawer open as we dont want anything to happen so we leave this blank
 
-                super.onDrawerOpened(drawerView);
-            }
-        };
+                    super.onDrawerOpened(drawerView);
+                }
+            };
 
 
-        //Setting the actionbarToggle to drawer layout
-        drawerLayout.setDrawerListener(actionBarDrawerToggle);
+            //Setting the actionbarToggle to drawer layout
+            drawerLayout.setDrawerListener(actionBarDrawerToggle);
 
-        //calling sync state is necessay or else your hamburger icon wont show up
-        actionBarDrawerToggle.syncState();
+            //calling sync state is necessary or else your hamburger icon wont show up
+            actionBarDrawerToggle.syncState();
 
+        }else{
+            startActivity(new Intent(MainActivity.this, AppStartScreenActivity.class));
+        }
     }
 
 

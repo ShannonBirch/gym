@@ -12,7 +12,7 @@ public class StoreDetails {
 
 
 
-    public static boolean storeDetails(String userID, String token, Context context){
+    public static void storeDetails(String userID, String token, Context context){
 
         Log.d("Store Details", "Started");
         final String SHARED_PREF_KEY = "UserInfo";
@@ -24,7 +24,7 @@ public class StoreDetails {
         editor.putString("uID", userID);
         editor.putString("uToken", token);
         editor.commit();
-        return true;
+
 
     }
 }

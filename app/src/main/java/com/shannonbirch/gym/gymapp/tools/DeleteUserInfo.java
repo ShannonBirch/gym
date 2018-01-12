@@ -19,7 +19,7 @@ public class DeleteUserInfo {
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREF_KEY, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        if(sharedPreferences.contains(SHARED_PREF_USER_ID_KEY)&&sharedPreferences.contains(SHARED_PREF_USER_TOKEN_KEY)) {
+        if(sharedPreferences.contains(SHARED_PREF_USER_ID_KEY)||sharedPreferences.contains(SHARED_PREF_USER_TOKEN_KEY)) {
 
             editor.clear();
             editor.commit();
