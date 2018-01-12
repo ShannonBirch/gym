@@ -1,6 +1,6 @@
 <?php
 
-
+	include "getAuthConn.php";
 
 function generateHash($password) {
 	    if (defined("CRYPT_BLOWFISH") && CRYPT_BLOWFISH) {
@@ -23,7 +23,7 @@ function generateHash($password) {
 
 
 
-    include "getAuthConn.php";
+
     $conn = getAuthConn();
 
     $emailCheckResult=$conn->query($emailCheckSQL);
@@ -52,6 +52,8 @@ function generateHash($password) {
 			//ToDo: Register other information
 			//ToDo: return information to the app
       echo "Success";
+			echo "\n$uID";
+			echo "\n$token";
 
     }
 
@@ -71,12 +73,15 @@ function generateHash($password) {
 				Checks if it exists
 				If it does exist
 				recursively calls the function until the generated user ID doesn't exist
+				returns a string userID
 		*/
 
 		$userID = substr(md5(rand()), 0, 18);
 		$checkUIDSQL = "SELECT uID FROM USERS WHERE uID='$userID';";
 
-		$uIDCheckResult=$conn->query($checkUIDSQL);
+		$uIDConn = getAuthConn();
+		$uIDCheckResult=$uIDConn->query($checkUIDSQL);
+		$uIDConn->close();
 		if($uIDCheckResult->num_rows>0){
 			return getUserID;
 		}else{

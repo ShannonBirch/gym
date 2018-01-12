@@ -1,5 +1,6 @@
 package com.shannonbirch.gym.gymapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -20,6 +21,7 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 
 import static com.shannonbirch.gym.gymapp.tools.IsEditTextEmpty.isEditTextEmpty;
+import static com.shannonbirch.gym.gymapp.tools.StoreDetails.storeDetails;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -125,22 +127,38 @@ public class RegisterActivity extends AppCompatActivity {
 
                 // Get the server response
 
-                  reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                  StringBuilder sb = new StringBuilder();
-                  String line = null;
+                reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                StringBuilder sb = new StringBuilder();
+                String line = reader.readLine();//First line is blank
+                line = reader.readLine();
+
+                if(line.toString().equals("Success")){
+
+                    String userID = reader.readLine().toString();
+                    String token = reader.readLine().toString();
+                    Context context = getApplicationContext();
+
+                    storeDetails(userID, token, RegisterActivity.this);
+
+                    //Open home screen
+                    startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+
+                    return;
 
 
-
-              // Read Server Response
-                  while((line = reader.readLine()) != null)
-                      {
-                            Log.e("In read line", line.toString());
-                             // Append server response in string
-                             sb.append(line+"\n");
-                      }
+                }else {
 
 
-                      responseCode = sb.toString();
+                    // Read Server Response
+                    while ((line = reader.readLine()) != null) {
+                        Log.e("In read line", line.toString());
+                        // Append server response in string
+                        sb.append(line + "\n");
+                    }
+
+
+                    responseCode = sb.toString();
+                }
               }
               catch(Exception ex)
               {
@@ -152,12 +170,13 @@ public class RegisterActivity extends AppCompatActivity {
 
                       reader.close();
                   }
-
+                  //ToDo: Handle the exception
                   catch(Exception ex) {}
               }
 
 
                 //ToDo:Figure out where that first \n came from
+                //ToDo: Clean
                 if(responseCode.equals("\nSuccess\n")) {//User has been registered
                     //Open home screen
                     startActivity(new Intent(RegisterActivity.this, MainActivity.class));

@@ -2,7 +2,6 @@ package com.shannonbirch.gym.gymapp;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,6 +21,7 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 
 import static com.shannonbirch.gym.gymapp.tools.IsEditTextEmpty.isEditTextEmpty;
+import static com.shannonbirch.gym.gymapp.tools.StoreDetails.storeDetails;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -86,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
                         + "=" + URLEncoder.encode(pass, "UTF-8");
 
             }catch (Exception e) {
-
+                //ToDo: Exception Handling
             }
 
             String responseCode = "";
@@ -133,16 +133,10 @@ public class LoginActivity extends AppCompatActivity {
 
                     String userID = reader.readLine().toString();
                     String token = reader.readLine().toString();
+                    Context context = getApplicationContext();
 
-                    //ToDo: take this out of here
-                    SharedPreferences sharedPreferences;
-
-                    sharedPreferences = getSharedPreferences(SHARED_PREF_KEY, Context.MODE_PRIVATE);
-                    sharedPreferences.edit().putString("uID", userID);
-                    sharedPreferences.edit().putString("uToken", token);
-
-
-
+                    storeDetails(userID, token, LoginActivity.this);
+                    
                     //Open home screen
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
 
@@ -177,12 +171,13 @@ public class LoginActivity extends AppCompatActivity {
 
                     reader.close();
                 }
-
+                //ToDo: Handle exceptions
                 catch(Exception ex) {}
             }
 
 
             //ToDo:Figure out where that first \n came from
+            //ToDo: Clean
             if(responseCode.equals("\nSuccess\n")) {//User has been registered
                 //Open home screen
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
