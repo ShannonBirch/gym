@@ -35,9 +35,9 @@ function generateHash($password) {
     }else{//The email address is not currently in the system
 
 
-			//ToDo: Implement check on UID so that there are no duplicates;
+		
 
-			$uID = getUserID();
+		$uID = getUserID();
 
 	    $insertSQL = "INSERT INTO USERS(uID, uEmailAddress, uPass)
 	                        VALUES('".$uID."', '".$email."', '".generateHash($pass)."');";
@@ -50,7 +50,7 @@ function generateHash($password) {
 			$token = createToken($uID);
 
 			//ToDo: Register other information
-			//ToDo: return information to the app
+			
       echo "Success";
 			echo "\n$uID";
 			echo "\n$token";
@@ -83,7 +83,7 @@ function generateHash($password) {
 		$uIDCheckResult=$uIDConn->query($checkUIDSQL);
 		$uIDConn->close();
 		if($uIDCheckResult->num_rows>0){
-			return getUserID;
+			return getUserID();
 		}else{
 			return $userID;
 		}
