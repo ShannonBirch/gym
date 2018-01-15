@@ -16,6 +16,13 @@
             android:icon="@drawable/reminder"
             android:title="@string/nav_reminders" />
 
+        <item
+            android:id="@+id/swipe_card"
+            android:checked="false"
+
+            android:title="@string/nav_swipe_card" />
+            <!-- ToDo: find Icon -->
+
 
     </group>
     <group  android:checkableBehavior="single"

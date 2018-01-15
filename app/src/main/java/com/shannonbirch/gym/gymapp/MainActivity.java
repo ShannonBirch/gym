@@ -99,6 +99,11 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Logout Selected", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(MainActivity.this, AppStartScreenActivity.class));
                             return true;
+                        case R.id.swipe_card:
+                            SwipeCardFragment swipeFragment = new SwipeCardFragment();
+                            android.support.v4.app.FragmentTransaction swipeFragmentTransaction = getSupportFragmentManager().beginTransaction();
+                            swipeFragmentTransaction.replace(R.id.frame, swipeFragment).commit();
+                            return true;
 
                         default:
                             Toast.makeText(getApplicationContext(), "Somethings Wrong", Toast.LENGTH_SHORT).show();

@@ -95,7 +95,6 @@ public class LoginActivity extends AppCompatActivity {
 
             try{// To send the data
 
-                //ToDo: write uLogin.php when I'm not on Amazon books wifi
                 URL url = new URL("http://gym.shannonbirch.com/phpScripts/Auth/uLogin.php");
 
 
@@ -129,7 +128,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
                 if(line.toString().equals("Success")){
-                    //ToDo: Store userID and token
 
                     String userID = reader.readLine().toString();
                     String token = reader.readLine().toString();

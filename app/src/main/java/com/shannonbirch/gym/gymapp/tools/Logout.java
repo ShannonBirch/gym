@@ -23,8 +23,6 @@ public class Logout {
 
     public static Boolean logout(Context context){
 
-        //ToDo: Web logout
-
         Log.d("CheckToken", "Checking Token begins");
         final String SHARED_PREF_KEY            = "UserInfo";
         final String SHARED_PREF_USER_ID_KEY    = "uID";
