@@ -1,9 +1,13 @@
 package com.shannonbirch.gym.gymapp.tools;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.StrictMode;
 import android.util.Log;
+
+import com.shannonbirch.gym.gymapp.LoginActivity;
+import com.shannonbirch.gym.gymapp.MainActivity;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -11,9 +15,12 @@ import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 
 import static com.shannonbirch.gym.gymapp.tools.CheckToken.checkToken;
 import static com.shannonbirch.gym.gymapp.tools.DeleteUserInfo.deleteUserInfo;
+import static com.shannonbirch.gym.gymapp.tools.PostToServer.postToServer;
+import static com.shannonbirch.gym.gymapp.tools.StoreDetails.storeDetails;
 
 /**
  * Created by shannon on 1/10/18.
@@ -51,59 +58,27 @@ public class Logout {
 
                 URL url = new URL("http://gym.shannonbirch.com/phpScripts/Auth/uLogout.php");
 
-                //ToDo: Figure out how to revert this when no longer needed
-                int SDK_INT = android.os.Build.VERSION.SDK_INT;
-                if (SDK_INT > 8)
-                {
-                    StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
-                            .permitAll().build();
-                    StrictMode.setThreadPolicy(policy);
+                ArrayList<String> response = postToServer(data, url);
 
+                if(response.get(1).equals("Success")){
 
-                }
-
-
-
-                // Send POST data request
-
-                URLConnection conn = url.openConnection();
-                conn.setDoOutput(true);
-                OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-                wr.write( data );
-                wr.flush();
-
-
-                // Get the server response
-
-                BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                StringBuilder sb = new StringBuilder();
-
-                String line = reader.readLine();//First line is blank
-                line = reader.readLine();//Second line contains the first line of the response
-
-
-                if(line.toString().equals("Success")){
                     deleteUserInfo(context);
                     return true;
 
                 }else{//There was an error of sorts
 
                     //ToDo: clean this and handle common responses
-                    sb.append(line);
+
                          /**/
                     // Read Server Response
-                    while((line = reader.readLine()) != null)
-                    {
-                        Log.e("In read line", line.toString());
-                        // Append server response in string
-                        sb.append(line+"\n");
+                    for(int i=0; i<response.size();i++) {
+                        Log.e("In read line", response.get(i));
                     }
 
-
-
-
-
                 }
+
+
+
 
 
 

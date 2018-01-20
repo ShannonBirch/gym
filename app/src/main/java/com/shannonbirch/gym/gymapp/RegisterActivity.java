@@ -19,8 +19,10 @@ import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 
 import static com.shannonbirch.gym.gymapp.tools.IsEditTextEmpty.isEditTextEmpty;
+import static com.shannonbirch.gym.gymapp.tools.PostToServer.postToServer;
 import static com.shannonbirch.gym.gymapp.tools.StoreDetails.storeDetails;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -106,38 +108,12 @@ public class RegisterActivity extends AppCompatActivity {
 
               URL url = new URL("http://gym.shannonbirch.com/phpScripts/Auth/uRegister.php");
 
-                //Android Stuff
-                //ToDo: Figure out how to revert this when no longer needed
-                int SDK_INT = android.os.Build.VERSION.SDK_INT;
-                if (SDK_INT > 8)
-                {
-                    StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
-                            .permitAll().build();
-                    StrictMode.setThreadPolicy(policy);
+               ArrayList<String> response = postToServer(data, url);
 
+                if(response.get(1).equals("Success")){
 
-                }//End of Android stuff
-
-               // Send POST data request
-
-                URLConnection conn = url.openConnection();
-                conn.setDoOutput(true);
-                OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-                wr.write( data );
-                wr.flush();
-
-                // Get the server response
-
-                reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                StringBuilder sb = new StringBuilder();
-                String line = reader.readLine();//First line is blank
-                line = reader.readLine();
-
-                if(line.toString().equals("Success")){
-
-                    String userID = reader.readLine().toString();
-                    String token = reader.readLine().toString();
-                    Context context = getApplicationContext();
+                    String userID = response.get(2);
+                    String token = response.get(3);
 
                     storeDetails(userID, token, RegisterActivity.this);
 
@@ -146,27 +122,24 @@ public class RegisterActivity extends AppCompatActivity {
 
                     return;
 
+                }else{//There was an error of sorts
 
-                }else {
+                    //ToDo: clean this and handle common responses
 
-
+                         /**/
                     // Read Server Response
-                    while ((line = reader.readLine()) != null) {
-                        Log.e("In read line", line.toString());
-                        // Append server response in string
-                        sb.append(line + "\n");
+
+                    for(int i=0; i<response.size();i++) {
+
+                        Log.e("In read line", response.get(i));
+                        responseCode += "\n"+ response.get(i);
                     }
 
-
-                    responseCode = sb.toString();
                 }
-              }
-              catch(Exception ex)
-              {
+              }catch(Exception ex) {
                 ex.printStackTrace();
-              }
-              finally
-              {
+
+              }finally{
                   try{
 
                       reader.close();
@@ -176,16 +149,11 @@ public class RegisterActivity extends AppCompatActivity {
               }
 
 
-                //ToDo:Figure out where that first \n came from
-                //ToDo: Clean
-                if(responseCode.equals("\nSuccess\n")) {//User has been registered
-                    //Open home screen
-                    startActivity(new Intent(RegisterActivity.this, MainActivity.class));
-                    return;
-                }else{//PHP script returns something other than "Success"
+
+
                 Log.e("ResponseCode:", responseCode);
                 invalidDetailsString = "Incorrect system response " + responseCode;
-                }
+
 
             }
 

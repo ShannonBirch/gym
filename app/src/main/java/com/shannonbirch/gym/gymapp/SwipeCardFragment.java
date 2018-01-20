@@ -48,6 +48,8 @@ public class SwipeCardFragment extends Fragment{
 
     private String swipe(Boolean inOrOut){
 
+        return null;
+
     }
 
 }
