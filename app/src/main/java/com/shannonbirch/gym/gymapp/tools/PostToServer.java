@@ -45,7 +45,7 @@ public class PostToServer {
 
             String line;
             while((line = reader.readLine()) != null) {
-                Log.e("In read line", line.toString());
+
                 // Append server response in string
                 response.add(line);
             }

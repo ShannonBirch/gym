@@ -29,7 +29,7 @@ public class CheckToken {
         sharedPreferences = context.getSharedPreferences(SHARED_PREF_KEY, Context.MODE_PRIVATE);
 
         if(sharedPreferences.contains(SHARED_PREF_USER_ID_KEY)&&sharedPreferences.contains(SHARED_PREF_USER_TOKEN_KEY)){
-
+            //ToDo: Have Check Token use PostToServer
 
             String data = "";
             try {// To create a data variable to send to the server
@@ -98,7 +98,7 @@ public class CheckToken {
                     // Read Server Response
                     while((line = reader.readLine()) != null)
                     {
-                        Log.e("In read line", line.toString());
+                        Log.e("Check Tok: In read line", line.toString());
                         // Append server response in string
                         sb.append(line+"\n");
                     }
