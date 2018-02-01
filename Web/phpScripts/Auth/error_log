@@ -1,0 +1,31 @@
+[03-Jan-2018 17:33:58 America/Chicago] PHP Parse error:  syntax error, unexpected ',' in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php on line 9
+[03-Jan-2018 17:34:06 America/Chicago] PHP Parse error:  syntax error, unexpected ',' in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php on line 9
+[03-Jan-2018 17:34:11 America/Chicago] PHP Parse error:  syntax error, unexpected ',' in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php on line 9
+[03-Jan-2018 17:34:25 America/Chicago] PHP Parse error:  syntax error, unexpected ',' in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php on line 9
+[03-Jan-2018 17:35:23 America/Chicago] PHP Parse error:  syntax error, unexpected ',' in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php on line 9
+[03-Jan-2018 17:41:21 America/Chicago] PHP Parse error:  syntax error, unexpected ',' in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php on line 9
+[03-Jan-2018 17:41:26 America/Chicago] PHP Parse error:  syntax error, unexpected ',' in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php on line 9
+[03-Jan-2018 17:42:06 America/Chicago] PHP Parse error:  syntax error, unexpected ',' in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php on line 9
+[03-Jan-2018 17:57:41 America/Chicago] PHP Parse error:  syntax error, unexpected ',' in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php on line 9
+[03-Jan-2018 17:59:21 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/uRegister.php on line 17
+[03-Jan-2018 17:59:26 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/uRegister.php on line 17
+[03-Jan-2018 17:59:46 America/Chicago] PHP Parse error:  syntax error, unexpected ',' in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php on line 9
+[03-Jan-2018 17:59:50 America/Chicago] PHP Parse error:  syntax error, unexpected ',' in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php on line 9
+[03-Jan-2018 17:59:55 America/Chicago] PHP Parse error:  syntax error, unexpected ',' in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php on line 9
+[03-Jan-2018 18:00:23 America/Chicago] PHP Parse error:  syntax error, unexpected ',' in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php on line 9
+[03-Jan-2018 18:00:34 America/Chicago] PHP Parse error:  syntax error, unexpected ',' in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php on line 9
+[03-Jan-2018 18:01:06 America/Chicago] PHP Parse error:  syntax error, unexpected ',' in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php on line 9
+[03-Jan-2018 18:01:14 America/Chicago] PHP Parse error:  syntax error, unexpected ',' in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php on line 9
+[03-Jan-2018 18:01:30 America/Chicago] PHP Parse error:  syntax error, unexpected ',' in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php on line 9
+[08-Jan-2018 20:00:13 America/Chicago] PHP Parse error:  syntax error, unexpected 'id' (T_STRING), expecting variable (T_VARIABLE) in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/createToken.php on line 9
+[08-Jan-2018 20:01:06 America/Chicago] PHP Fatal error:  Cannot redeclare getAuthConn() (previously declared in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php:9) in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php on line 17
+[08-Jan-2018 20:02:38 America/Chicago] PHP Fatal error:  Call to a member function query() on null in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/createToken.php on line 17
+[09-Jan-2018 13:11:34 America/Chicago] PHP Fatal error:  Call to a member function query() on null in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/uRegister.php on line 79
+[11-Jan-2018 23:03:27 America/Chicago] PHP Fatal error:  Cannot redeclare getAuthConn() (previously declared in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php:9) in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php on line 17
+[11-Jan-2018 23:07:50 America/Chicago] PHP Fatal error:  Cannot redeclare getAuthConn() (previously declared in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php:9) in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php on line 17
+[11-Jan-2018 23:08:07 America/Chicago] PHP Fatal error:  Cannot redeclare getAuthConn() (previously declared in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php:9) in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php on line 17
+[12-Jan-2018 10:37:01 America/Chicago] PHP Fatal error:  Cannot redeclare getAuthConn() (previously declared in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php:9) in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php on line 17
+[12-Jan-2018 10:40:15 America/Chicago] PHP Fatal error:  Cannot redeclare getAuthConn() (previously declared in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php:9) in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php on line 17
+[12-Jan-2018 10:52:53 America/Chicago] PHP Fatal error:  Cannot redeclare getAuthConn() (previously declared in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php:9) in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php on line 17
+[12-Jan-2018 23:16:12 America/Chicago] PHP Fatal error:  Cannot redeclare getAuthConn() (previously declared in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php:9) in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php on line 17
+[22-Jan-2018 12:07:09 America/Chicago] PHP Fatal error:  Cannot redeclare getAuthConn() (previously declared in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php:9) in /home3/shannonb/gym.shannonbirch.com/phpScripts/Auth/getAuthConn.php on line 17
