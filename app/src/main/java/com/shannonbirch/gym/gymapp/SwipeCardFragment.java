@@ -96,7 +96,7 @@ public class SwipeCardFragment extends Fragment{
                 if (inOrOut == true) {//Swipe In
                     url = new URL("http://gym.shannonbirch.com/phpScripts/swipein.php");
                 } else {//Swipe Out
-                    url = new URL("http://gym.shannonbirch.com/phpScripts/swipeout.php");
+                    url = new URL("http://gym.shannonbirch.com/phpScripts/uSwipeOut.php");
                 }
 
 
@@ -115,7 +115,7 @@ public class SwipeCardFragment extends Fragment{
 
                         return true;
                     }else{//Something went Wrong
-                        Log.e("Swipe Card Fragment","Error failed to swipe in");
+                        Log.e("Swipe Card Fragment","Error failed to swipe");
                         for(int i=0; i<response.size();i++) {
 
                             Log.e("Swipe: In read line"+String.valueOf(i), response.get(i));
